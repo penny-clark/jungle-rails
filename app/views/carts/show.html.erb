@@ -5,8 +5,10 @@
   </header>
 
   <% if enhanced_cart.empty? %>
-    <p>Your cart is currently empty</p>
-    <%= link_to 'Return to home page', "products/index" %>
+    <div class="alert alert-info">
+    Your cart is currently empty
+    </div>
+    <%= link_to 'Return to home page', "/" %>
   
   <% else %>
 
