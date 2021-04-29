@@ -4,9 +4,9 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
-  <% cust_order = Product.where(id: @order.line_items.product).map {|product| { product:product, quantity: @order[product.id.to_s] } } %>
+  <% product_info = Product.where(id: @order.line_items).map {|product| { product:product} } %>
 
-  <%= debug cust_order %>
+  <%= debug @order.line_items %>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-      <% cust_order.each do |line_item| %>
+      <% product_info.each do |line_item| %>
         <%= render 'line_item', product: line_item[:product], quantity: line_item[:quantity].to_i %>
       <% end %>
       </tbody>
