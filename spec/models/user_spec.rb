@@ -150,5 +150,20 @@ RSpec.describe User, type: :model do
 
       expect(authenticate).to eq nil
     end
+    
+    it "should return user if info is valid even if there are extra spaces before or after email" do
+      user = User.find_by_email('megg@bartley.com')
+      authenticate = User.authenticate_with_credentials('   megg@bartley.com   ', 'Egg')
+
+      expect(authenticate).to eq user
+    end
+
+    it "should return user if info is valid even if the case doesn't match" do
+      user = User.find_by_email('megg@bartley.com')
+      authenticate = User.authenticate_with_credentials('MEGG@bartley.COM', 'Egg')
+
+      expect(authenticate).to eq user
+    end
+    
   end
 end
