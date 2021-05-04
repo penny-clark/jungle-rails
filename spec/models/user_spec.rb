@@ -68,19 +68,57 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
 
-    # xit "is not valid if password and passwor confirmation fields don't match" do
-      # user = User.new(
-      #     first_name: 'Egg',
-      #     last_name: 'Eggerson',
-      #     email: 'eggy@eggy.egg',
-      #     password: 'Egg',
-      #     password_confirmation: 'Egg'
-      #   )
-      #   expect(user).to_not be_valid
-    # end
+    it "is not valid if password and password confirmation fields don't match" do
+      user = User.new(
+          first_name: 'Egg',
+          last_name: 'Eggerson',
+          email: 'eggy@eggy.egg',
+          password: 'Egg',
+          password_confirmation: 'Eggs!!!!!'
+        )
+        expect(user).to_not be_valid
+    end
 
-    # xit "should not be valid if email already exists in database" do
-    # end
+    before { User.create!(
+      first_name: 'Walty',
+      last_name: 'Budd',
+      email: 'walty@budd.com',
+      password: 'Egg',
+      password_confirmation: 'Egg'
+    ) }
+
+    it "should not be valid if email already exists in database" do
+      user = User.new(
+        first_name: 'Egg',
+        last_name: 'Eggerson',
+        email: 'walty@budd.com',
+        password: 'Egg',
+        password_confirmation: 'Egg'
+      )
+      expect(user).to_not be_valid
+    end
+
+    it "should not be valid if email already exists in database, not case sensitive" do
+      user = User.new(
+        first_name: 'Egg',
+        last_name: 'Eggerson',
+        email: 'WALTY@budd.COM',
+        password: 'Egg',
+        password_confirmation: 'Egg'
+      )
+      expect(user).to_not be_valid
+    end
+
+    it "should have a password at least three characters long" do
+      user = User.new(
+        first_name: 'Egg',
+        last_name: 'Eggerson',
+        email: 'eggy@eggy.egg',
+        password: 'Eg',
+        password_confirmation: 'Eg'
+      )
+      expect(user).to_not be_valid
+    end
 
   end
 end
