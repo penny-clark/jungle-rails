@@ -119,6 +119,36 @@ RSpec.describe User, type: :model do
       )
       expect(user).to_not be_valid
     end
+  end
 
+  before { User.create!(
+    first_name: 'Megg',
+    last_name: 'Bartley',
+    email: 'megg@bartley.com',
+    password: 'Egg',
+    password_confirmation: 'Egg'
+  ) }
+
+  describe '.authenticate_with_credentials' do
+    it "should return user if info is valid" do
+      user = User.find_by_email('megg@bartley.com')
+      authenticate = User.authenticate_with_credentials('megg@bartley.com', 'Egg')
+
+      expect(authenticate).to eq user
+    end
+
+    it "should return nil if email does not match" do
+      user = User.find_by_email('megg@bartley.com')
+      authenticate = User.authenticate_with_credentials('megg@egg.com', 'Egg')
+
+      expect(authenticate).to eq nil
+    end
+
+    it "should return false if password is not valid" do
+      user = User.find_by_email('megg@bartley.com')
+      authenticate = User.authenticate_with_credentials('megg@bartley.com', 'Eggs!!!')
+
+      expect(authenticate).to eq nil
+    end
   end
 end
