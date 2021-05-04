@@ -41,13 +41,19 @@ gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Use bin/rspec to test
   gem 'rspec-rails', '~> 3.5'
   gem 'byebug'
   gem 'quiet_assets'
   gem 'dotenv-rails'
 end
 
-# Use bin/rspec to test
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
