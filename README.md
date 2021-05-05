@@ -1,6 +1,21 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+## About this project
+  Jungle is mini e-commerce application built with Rails 4.2.  
+  
+  This project builds on a starter repository of code provided by Lighthouse Labs for the purposes of teaching Rails by example. The tasks I completed on this project were intended to emmulate a typical wev dev job workflow. I fixed formatting issues, added new features, and authentication security. I also implemented testing with RSpec, Capybara, and Poltergeist.
+
+## Screenshots
+
+## Dependencies
+
+* Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
+* PostgreSQL 9.x
+* Stripe
+
+## Set up instructions
+
+These instructions were included as part of the original repository, and I have included them here for those who are interested.
 
 ## Additional Steps for Apple M1 Machines
 
