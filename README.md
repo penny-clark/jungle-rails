@@ -7,6 +7,9 @@
 
 ## Screenshots
 
+!["Screenshot of Home page"](https://github.com/penny-clark/jungle-rails/blob/master/docs/home-page.png?raw=true)
+!["Screenshot of My Cart page"](https://github.com/penny-clark/jungle-rails/blob/master/docs/cart-page.png?raw=true)
+
 ## Dependencies
 
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
